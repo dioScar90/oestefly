@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
+using oestefly.AutoMapperConfig;
+using oestefly.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
