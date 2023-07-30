@@ -4,7 +4,7 @@ This is my web app called *OesteFly*. Enjoy it.
 
 ## Etapas comuns:
 
-### Criar ASP.NET Core Web API ('cd backend/'):
+### Criar ASP.NET Core Web API (`cd backend/`):
 - `dotnet new webapi`
 
 ### Instalar Entity Framework:
@@ -25,11 +25,11 @@ This is my web app called *OesteFly*. Enjoy it.
 - `dotnet ef migrations add InitialCreate`
 - `dotnet ef database update`
 
-### Criar projeto React.js com Next.js ('cd ../'):
+### Criar projeto React.js com Next.js (`cd ../`):
 - Com **React**:
-    - `npx create-react-app client-app --template typescript`
+    - `npx create-react-app frontend --template typescript`
 - Com **Next**:
-    - `npx create-next-app@latest client-app`
+    - `npx create-next-app@latest frontend`
         - TypeScript YES
         - ESLint YES
         - Tailwind CSS YES
@@ -37,7 +37,7 @@ This is my web app called *OesteFly*. Enjoy it.
         - App Router YES
         - import alias NO
 
-### Instalando libs úteis no projeto ('cd frontend/'):
+### Instalando libs úteis no projeto (`cd frontend/`):
 - Instalando SASS (usar com arquivos SCSS):
     - `npm i sass`
 - Instalando Material-UI e Material-Icons:
@@ -55,7 +55,7 @@ This is my web app called *OesteFly*. Enjoy it.
 ### Após criar React, agora na raiz do projeto (`cd ../`):
 - `npm init`
 - Acrescentar em *package.json*, em *scripts*, o item:
-    - *"start": "concurrently \"dotnet watch run\" \"cd client-app && npm run dev\""*
+    - *"start": "concurrently \"dotnet watch run\" \"cd frontend && npm run dev\""*
 - `npm install --sav-dev concurrently`
 - `npm install react react-dom next --sav-dev concurrently`
 
