@@ -2,12 +2,12 @@
 
 This is my web app called *OesteFly*. Enjoy it.
 
-## Etapas comuns:
+## Common steps:
 
-### Criar ASP.NET Core Web API (`cd backend/`):
+### Create ASP.NET Core Web API (`cd backend/`):
 - `dotnet new webapi`
 
-### Instalar Entity Framework:
+### Install Entity Framework:
 - `dotnet tool install --global dotnet-ef` ou `dotnet tool update --global dotnet-ef`
     - `dotnet add package Microsoft.EntityFrameworkCore.Sqlite` ou
     - `dotnet add package Microsoft.EntityFrameworkCore.SqlServer` ou
@@ -15,20 +15,20 @@ This is my web app called *OesteFly*. Enjoy it.
 - `dotnet add package Microsoft.EntityFrameworkCore.Design`
 - `dotnet add package Microsoft.EntityFrameworkCore.Tools`
 
-### Instalar AutoMapper:
+### Install AutoMapper:
 - `dotnet add package AutoMapper`
 - `dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection`
 <!-- - `dotnet add package Microsoft.AspNetCore.Session`
 - `dotnet add package Microsoft.Extensions.DependencyInjection` -->
 
-### Realizar Migrations:
+### Do Migrations:
 - `dotnet ef migrations add InitialCreate`
 - `dotnet ef database update`
 
-### Criar projeto React.js com Next.js (`cd ../`):
-- Com **React**:
+### Create a React project with Next (`cd ../`):
+- Only **React**:
     - `npx create-react-app frontend --template typescript`
-- Com **Next**:
+- **Next**:
     - `npx create-next-app@latest frontend`
         - TypeScript YES
         - ESLint YES
@@ -37,13 +37,13 @@ This is my web app called *OesteFly*. Enjoy it.
         - App Router YES
         - import alias NO
 
-### Instalando libs úteis no projeto (`cd frontend/`):
-- Instalando SASS (usar com arquivos SCSS):
+### Installing useful libs (`cd frontend/`):
+- Installing SASS (use it with SCSS files):
     - `npm i sass`
-- Instalando Material-UI e Material-Icons:
+- Installing Material-UI and Material-Icons:
     - `npm install @mui/material @emotion/react @emotion/styled`
     - `npm i @mui/icons-material`
-- Rotas:
+- Routes:
     - `npm i react-router-dom`
 - Axios:
     - `npm install axios`
@@ -52,11 +52,11 @@ This is my web app called *OesteFly*. Enjoy it.
 - sweetalert2:
     - `npm i sweetalert2`
 
-### Após criar React, agora na raiz do projeto (`cd ../`):
+### Now on the root of the project, after create React project (`cd ../`):
 - `npm init`
-- Acrescentar em *package.json*, em *scripts*, o item:
+- Add in *package.json > scripts* this item:
     - *"start": "concurrently \"dotnet watch run\" \"cd frontend && npm run dev\""*
 - `npm install --sav-dev concurrently`
 - `npm install react react-dom next --sav-dev concurrently`
 
-Agora, para rodar, basta digitar `npm start` que já irá rodar tanto o backend quanto o frontend.
+Now, to run both backend and frontend together, just type `npm start`.
