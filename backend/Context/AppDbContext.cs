@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using oestefly.Entities;
+using backend.Entities;
 
-namespace oestefly.Context;
+namespace backend.Context;
 
 public class AppDbContext : DbContext
 {

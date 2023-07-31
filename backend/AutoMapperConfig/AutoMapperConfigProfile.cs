@@ -1,8 +1,8 @@
 using AutoMapper;
-using oestefly.Dtos;
-using oestefly.Entities;
+using backend.Dtos;
+using backend.Entities;
 
-namespace oestefly.AutoMapperConfig;
+namespace backend.AutoMapperConfig;
 
 public class AutoMapperConfigProfile : Profile
 {

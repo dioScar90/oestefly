@@ -1,4 +1,4 @@
-namespace oestefly.Entities;
+namespace backend.Entities;
 
 public enum UserRole
 {

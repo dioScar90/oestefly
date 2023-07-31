@@ -1,6 +1,6 @@
-using oestefly.Entities;
+using backend.Entities;
 
-namespace oestefly.Entities;
+namespace backend.Entities;
 
 public class Address : BaseEntity
 {

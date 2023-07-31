@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
-using oestefly.AutoMapperConfig;
-using oestefly.Context;
+using backend.AutoMapperConfig;
+using backend.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 

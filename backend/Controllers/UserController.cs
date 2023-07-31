@@ -1,11 +1,11 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using oestefly.Entities;
-using oestefly.Context;
-using oestefly.Dtos;
+using backend.Entities;
+using backend.Context;
+using backend.Dtos;
 
-namespace oestefly.Controllers;
+namespace backend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

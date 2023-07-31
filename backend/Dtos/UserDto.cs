@@ -1,6 +1,6 @@
-using oestefly.Entities;
+using backend.Entities;
 
-namespace oestefly.Dtos;
+namespace backend.Dtos;
 
 public record UserDto (
     int Id,

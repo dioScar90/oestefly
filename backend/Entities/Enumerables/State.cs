@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace oestefly.Entities;
+namespace backend.Entities;
 
 public enum State
 {

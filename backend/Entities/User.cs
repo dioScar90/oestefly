@@ -1,7 +1,7 @@
  
-using oestefly.Entities;
+using backend.Entities;
 
-namespace oestefly.Entities;
+namespace backend.Entities;
 
 
 public class User : Person
