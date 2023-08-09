@@ -2,8 +2,7 @@ using backend.Entities;
 
 namespace backend.Dtos;
 
-public record AddressDto (
-    int Id,
+public record AddressCreateDto (
     StreetType StreetType,
     string Street,
     string Number,

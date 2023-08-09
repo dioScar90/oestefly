@@ -2,9 +2,9 @@ namespace backend.Entities;
 
 public enum UserRole
 {
-    Admin = 1,
+    Guest,
+    Admin,
     Manager,
     Regular,
-    Client,
-    Guest
+    Client
 }

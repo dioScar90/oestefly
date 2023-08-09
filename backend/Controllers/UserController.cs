@@ -48,75 +48,25 @@ public class UserController : ControllerBase
         
         return Ok(convertedUser);
     }
-
-    // private List<Address> GetAddressesIntoList(ICollection<GetAddressDto> addresses)
-    // {
-    //     var newList = addresses.Aggregate(new List<Address>(), (acc, curr) => {
-    //         Address address = new()
-    //         {
-    //             StreetType      = curr.StreetType,
-    //             Street          = curr.Street,
-    //             Number          = curr.Number,
-    //             Complement      = curr.Complement,
-    //             Neighborhood    = curr.Neighborhood,
-    //             City            = curr.City,
-    //             State           = curr.State,
-    //             PostalCode      = curr.PostalCode
-    //         };
-
-    //         acc.Add(address);
-
-    //         return acc;
-    //     });
-
-    //     return newList;
-    // }
     
     [HttpPost]
-    public async Task<IActionResult> CreateUser([FromBody] UserDto dto)
+    public async Task<IActionResult> CreateUser([FromBody] UserCreateDto dto)
     {
         User newUser = _mapper.Map<User>(dto);
+        Console.WriteLine("\n\n\n\n\n\n\n\n\npelo menos aqui\n\n\n\n\n\n\n\n\n");
         await _context.Users.AddAsync(newUser);
         int newId = await _context.SaveChangesAsync();
+
+        Console.WriteLine($"\n\n\n\n\n\n\n\n\nNew Id => {newId}\n\n\n\n\n\n\n\n\n");
 
         var objOk = new {
             id = newUser.Id,
             message = "User created successfully"
         };
-
-        // var addressesList = GetAddressesIntoList(dto.Addresses);
-
-        // var novo = new User() {
-        //     FirstName   = dto.FirstName,
-        //     LastName    = dto.LastName,
-        //     Email       = dto.Email,
-        //     Phone       = dto.Phone,
-        //     Password    = dto.Password,
-        //     Addresses   = addressesList,
-        //     Role        = dto.Role
-        // };
         
-        // await _context.Users.AddAsync(novo);
-        // await _context.SaveChangesAsync();
-
-        // return Ok({message: "User created successfully"});
         return Ok(objOk);
     }
-
-    // [HttpPut("{id}")]
-    // public IActionResult UpdateAgendamento([FromRoute] int id, [FromBody] Agendamento agendamento)
-    // {
-    //     if (id != agendamento.Id)
-    //     {
-    //         return BadRequest();
-    //     }
-
-    //     _context.Entry(agendamento).State = EntityState.Modified;
-    //     _context.SaveChanges();
-
-    //     return NoContent();
-    // }
-
+    
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteUser([FromRoute] int id)
     {
@@ -134,85 +84,4 @@ public class UserController : ControllerBase
         
         return Ok($"User {user.GetFullName()} deleted successfully.");
     }
-
-    // private readonly ApplicationDbContext _context;
-
-    // public ProductsController(ApplicationDbContext context)
-    // {
-    //     _context = context;
-    // }
-
-    // // CRUD -> Creade - Read - Update - Delete
-
-    // // Create
-    // [HttpPost]
-    // public async Task<IActionResult> CreateProduct([FromBody] CreateUpdateProctDto dto)
-    // {
-    //     var newProduct = new ProductEntity()
-    //     {
-    //         Brand = dto.Brand,
-    //         Title = dto.Title
-    //     };
-
-    //     await _context.Products.AddAsync(newProduct);
-    //     await _context.SaveChangesAsync();
-
-    //     return Ok("Product Saved Successfully");
-    // }
-
-    // // Read
-    // [HttpGet]
-    // public async Task<ActionResult<List<ProductEntity>>> GetAllProducts()
-    // {
-    //     var products = await _context.Products.OrderByDescending(q => q.CreatedAt).ToListAsync();
-
-    //     return Ok(products);
-    // }
-
-    // [HttpGet]
-    // [Route("{id}")]
-    // public async Task<ActionResult<ProductEntity>> GetProductById([FromRoute] int id)
-    // {
-    //     var product = await _context.Products.FirstOrDefaultAsync(q => q.Id == id);
-
-    //     if (product is null)
-    //         return NotFound("Product Not Found");
-        
-    //     return Ok(product);
-    // }
-
-    // // Update
-    // [HttpPut]
-    // [Route("{id}")]
-    // public async Task<IActionResult> UpdateProduct([FromRoute] int id, [FromBody] CreateUpdateProctDto dto)
-    // {
-    //     var product = await _context.Products.FirstOrDefaultAsync(q => q.Id == id);
-
-    //     if (product is null)
-    //         return NotFound("Product Not Found");
-        
-    //     product.Title = dto.Title;
-    //     product.Brand = dto.Brand;
-    //     product.UpdatedAt = DateTime.Now;
-
-    //     await _context.SaveChangesAsync();
-
-    //     return Ok("Product Updated Successfully");
-    // }
-
-    // // Delete
-    // [HttpDelete]
-    // [Route("{id}")]
-    // public async Task<IActionResult> DeleteProduct([FromRoute] int id)
-    // {
-    //     var product = await _context.Products.FirstOrDefaultAsync(q => q.Id == id);
-
-    //     if (product is null)
-    //         return NotFound("Product Not Found");
-        
-    //     _context.Products.Remove(product);
-    //     await _context.SaveChangesAsync();
-
-    //     return Ok("Product Deleted Successfully");
-    // }
 }

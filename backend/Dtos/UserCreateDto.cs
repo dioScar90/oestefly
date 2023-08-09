@@ -2,12 +2,11 @@ using backend.Entities;
 
 namespace backend.Dtos;
 
-public record UserDto (
-    int Id,
+public record UserCreateDto (
     string FirstName,
     string LastName,
     string Email,
     string Phone,
-    ICollection<AddressDto> Addresses,
+    ICollection<AddressCreateDto> Addresses,
     UserRole Role
 );
