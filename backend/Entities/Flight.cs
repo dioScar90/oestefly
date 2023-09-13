@@ -2,7 +2,6 @@ namespace backend.Entities;
 
 public class Flight
 {
-    public int Id { get; set; }
     public string Airline { get; set; }
     public string FlightNumber { get; set; }
     public string DepartureAirport { get; set; }

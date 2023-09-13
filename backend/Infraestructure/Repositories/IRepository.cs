@@ -11,12 +11,11 @@ namespace backend.Infraestructure.Repositories;
 public interface IRepository<TEntity> where TEntity : BaseEntity
 {
     Task Delete(int id);
-    Task FisicalDelete(int id);
+    Task PhisicalDelete(int id);
     Task<TEntity> Select(int id);
     Task<TEntity> GetById(int id);
     Task<List<TEntity>> List();
-    Task<Pagination<TEntity>> PaginationList(int offset, int limit);
-    Task<Pagination<TEntity>> PaginationListDescending(int offset, int limit);
+    Task<Pagination<TEntity>> PaginationList(int offset, int limit, bool desc);
     Task<List<TEntity>> DescendingList();
     Task<TEntity> Save(TEntity entity);
     Task<bool> Exists(int id);

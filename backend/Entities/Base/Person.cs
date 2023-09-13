@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace backend.Entities;
 
 public abstract class Person : BaseEntity
@@ -7,5 +9,6 @@ public abstract class Person : BaseEntity
     public string Email { get; set; }
     public string Phone { get; set; }
 
-    public string GetFullName() => $"{FirstName} {LastName}";
+    [NotMapped]
+    public string GetFullName => $"{FirstName} {LastName}";
 }

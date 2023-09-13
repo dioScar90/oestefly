@@ -32,7 +32,7 @@ public abstract class Repository<TEntity> : IDisposable, IRepository<TEntity> wh
         await Update(entity);
     }
 
-    public async Task FisicalDelete(int id)
+    public async Task PhisicalDelete(int id)
     {
         var entity = await DbSet.FindAsync(id);
         DbSet.Remove(entity);
@@ -54,7 +54,7 @@ public abstract class Repository<TEntity> : IDisposable, IRepository<TEntity> wh
             .ToListAsync();
     }
 
-    public virtual async Task<Pagination<TEntity>> PaginationList(int offset, int limit)
+    public virtual async Task<Pagination<TEntity>> PaginationList(int offset, int limit, bool desc = false)
     {
         var skip = (offset - 1) * limit;
         var query = DbSet
@@ -65,29 +65,14 @@ public abstract class Repository<TEntity> : IDisposable, IRepository<TEntity> wh
         {
             Offset = offset,
             TotalPages = (int) Math.Ceiling((double) rowCount / limit),
-            List = await query.OrderBy(p => p.Id).Skip(skip).Take(limit).ToListAsync(),
+            List = desc
+                ? await query.OrderByDescending(p => p.Id).Skip(skip).Take(limit).ToListAsync()
+                : await query.OrderBy(p => p.Id).Skip(skip).Take(limit).ToListAsync(),
             TotalItems = rowCount
         };
         return pagination;
     }
-
-    public virtual async Task<Pagination<TEntity>> PaginationListDescending(int offset, int limit)
-    {
-        var skip = (offset - 1) * limit;
-        var query = DbSet
-            .AsNoTrackingWithIdentityResolution()
-            .Where(c => c.IsDeleted == false || c.IsDeleted == null);
-        var rowCount = await query.CountAsync();
-        var pagination = new Pagination<TEntity>
-        {
-            Offset = offset,
-            TotalPages = (int) Math.Ceiling((double) rowCount / limit),
-            List = await query.OrderByDescending(p => p.Id).Skip(skip).Take(limit).ToListAsync(),
-            TotalItems = rowCount
-        };
-        return pagination;
-    }
-
+    
     public virtual async Task<List<TEntity>> DescendingList()
     {
         return await DbSet
@@ -102,6 +87,7 @@ public abstract class Repository<TEntity> : IDisposable, IRepository<TEntity> wh
         try
         {
             Db.ChangeTracker.Clear();
+
             if (entity.Id > 0)
                 await Update(entity);
             else

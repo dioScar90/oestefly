@@ -1,10 +1,7 @@
-using backend.Entities;
-
 namespace backend.Entities;
 
 public class Address : BaseUser
 {
-    public int Id { get; set; }
     public StreetType StreetType { get; set; }
     public string Street { get; set; }
     public string Number { get; set; }
