@@ -2,7 +2,16 @@ namespace backend.Entities;
 
 public abstract class BaseEntity
 {
-    public DateTime CreatedAt { get; set; } = DateTime.Now;
+    public BaseEntity()
+    {
+        CreatedAt ??= DateTime.Now;
+        UpdatedAt = DateTime.Now;
+        IsDeleted ??= false;
+    }
+    public int Id { get; set; }
+    public DateTime? CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
-    public bool IsActive { get; set; } = true;
+    public int? CreatingUserId { get; set; }
+    public int? UpdatingUserId { get; set; }
+    public bool? IsDeleted { get; set; }
 }

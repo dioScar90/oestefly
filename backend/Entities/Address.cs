@@ -2,7 +2,7 @@ using backend.Entities;
 
 namespace backend.Entities;
 
-public class Address : BaseEntity
+public class Address : BaseUser
 {
     public int Id { get; set; }
     public StreetType StreetType { get; set; }
@@ -14,7 +14,4 @@ public class Address : BaseEntity
     public State State { get; set; }
     public string PostalCode { get; set; }
     public string Country { get; set; } = "Brasil";
-    
-    public int UserId { get; set; }
-    public User User { get; set; }
 }
